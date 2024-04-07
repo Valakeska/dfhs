@@ -19,7 +19,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '8.0.x' # Укажите актуальную версию .NET SDK
+        dotnet-version: '8.0.x' 
 
     - name: Restore dependencies
       run: dotnet restore
@@ -27,7 +27,5 @@ jobs:
     - name: Install StyleCop.Analyzers
       run: dotnet add WebApplication3/WebApplication3.csproj package StyleCop.Analyzers --version 1.1.118
 
-  
     - name: Run StyleCop analysis
-      run: dotnet build WebApplication3/WebApplication3.csproj --no-restore --configuration Release /p:StyleCopEnabled=true /p:StyleCopAllAnalyzers=true /p:StyleCopIgnoreGeneratedCode=true
-
+      run: dotnet build WebApplication3/WebApplication3.csproj --no-restore --configuration Release /p:StyleCopEnabled=true /p:StyleCopAllAnalyzers=true /p:StyleCopIgnoreGeneratedCode=true /verbosity:detailed
