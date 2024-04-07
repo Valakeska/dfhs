@@ -19,7 +19,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '6.0.x' # Укажите актуальную версию .NET SDK
+        dotnet-version: '8.0.x' # Укажите актуальную версию .NET SDK
 
     - name: Restore dependencies
       run: dotnet restore
