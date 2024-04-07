@@ -28,4 +28,4 @@ jobs:
       run: dotnet add WebApplication3/WebApplication3.csproj package StyleCop.Analyzers --version 1.1.118
 
     - name: Run StyleCop analysis
-      run: dotnet build WebApplication3/WebApplication3.csproj --no-restore --configuration Release /p:StyleCopEnabled=true /p:StyleCopAllAnalyzers=true /p:StyleCopIgnoreGeneratedCode=true /verbosity:detailed
+      run: dotnet build WebApplication3/WebApplication3.csproj --no-restore --configuration Release /p:StyleCopEnabled=true /p:StyleCopAllAnalyzers=true /p:StyleCopIgnoreGeneratedCode=true /verbosity:normal
