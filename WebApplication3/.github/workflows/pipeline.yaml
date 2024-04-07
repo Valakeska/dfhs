@@ -1,0 +1,37 @@
+name: ASP.NET Core API Code Style Check
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  style_check:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.0.x' # Укажите актуальную версию .NET SDK
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Install StyleCop.Analyzers
+      run: dotnet add WebApplication3/WebApplication3.csproj package StyleCop.Analyzers --version 1.1.118
+
+    - name: Install Roslynator
+      run: dotnet add WebApplication3/WebApplication3.csproj package Roslynator.Analyzers --version 3.0.0
+
+    - name: Run StyleCop analysis
+      run: dotnet build WebApplication3/WebApplication3.csproj --no-restore --configuration Release /p:StyleCopEnabled=true /p:StyleCopAllAnalyzers=true /p:StyleCopIgnoreGeneratedCode=true
+
+    - name: Run Roslynator analysis
+      run: dotnet roslynator analyze solution.sln 
